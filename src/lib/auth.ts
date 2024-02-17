@@ -38,19 +38,6 @@ export const config = {
     error: '/signin',
   },
   callbacks: {
-    authorized({ request, auth }: any) {
-      const protectedPaths = [
-        /\/shipping/,
-        /\/payment/,
-        /\/place-order/,
-        /\/profile/,
-        /\/order\/(.*)/,
-        /\/admin/,
-      ];
-      const { pathname } = request.nextUrl;
-      if (protectedPaths.some((p) => p.test(pathname))) return !!auth;
-      return true;
-    },
     // 트리거로 유저 업데이트
     async jwt({ user, trigger, session, token }: any) {
       if (user) {
