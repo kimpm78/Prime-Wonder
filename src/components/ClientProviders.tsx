@@ -1,5 +1,5 @@
 'use client';
-import { cartStore } from '@/lib/hooks/useCartStore';
+import { cartStore } from '../lib/hooks/useCartStore';
 import { useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { SWRConfig } from 'swr';

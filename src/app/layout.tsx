@@ -1,13 +1,12 @@
+import Providers from '@/components/Providers';
 import './globals.css';
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-
-import Footer from '@/components/organisms/Footer';
+import Header from '@/components/header/header';
 import CategoryMenu from '@/components/atoms/CategoryMenu';
 import Notice from '@/components/molecules/Notice';
-import Header from '@/components/header/header';
-import Providers from '@/components/Providers';
+import Footer from '@/components/organisms/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 

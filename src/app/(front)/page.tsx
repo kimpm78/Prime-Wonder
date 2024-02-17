@@ -1,5 +1,4 @@
-import ProductItem from '@/components/products/ProductItem';
-import data from '@/lib/data';
+import ProductItem from '@/components/molecules/ProductItem';
 import productService from '@/lib/services/productService';
 import { convertDocToObj } from '@/lib/utils';
 import { Metadata } from 'next';
