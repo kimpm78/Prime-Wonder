@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "parserOptions": {
+    "node": true,
+    "es2021": true
+  },
+  "ignorePatterns": ["node_modules"],
+  "extends": [
+    "airbnb", // Enables airbnb rules
+    "airbnb-typescript", // Enables typescript rules
+    "airbnb/hooks", // Enables airbnb/hooks rules
+    "next/core-web-vitals", // Enables next/core-web-vitals linting
+    "plugin:prettier/recommended",
+    "prettier" // eslint-config-prettier is recommended
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
+    "no-useless-catch": "off",
+    "semi": ["error", "always"]
+  }
+}
