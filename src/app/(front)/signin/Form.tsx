@@ -36,21 +36,24 @@ const Form = () => {
 
   const formSubmit: SubmitHandler<Inputs> = async (form) => {
     const { email, password } = form;
-    signIn('credentials', { email, password });
+    signIn('credentials', {
+      email,
+      password,
+    });
   };
   return (
-    <div className="max-w-sm mx-auto card bg-base-300 my-4">
+    <div className="max-w-sm  mx-auto card bg-base-300 my-4">
       <div className="card-body">
-        <h1 className="card-title">サインイン</h1>
+        <h1 className="card-title">Sign in</h1>
         {params.get('error') && (
-          <div className="alert alert-error">
+          <div className="alert text-error">
             {params.get('error') === 'CredentialsSignin'
               ? 'Invalid email or password'
               : params.get('error')}
           </div>
         )}
         {params.get('success') && (
-          <div className="alert alert-success">{params.get('success')}</div>
+          <div className="alert text-success">{params.get('success')}</div>
         )}
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="my-2">
@@ -102,13 +105,14 @@ const Form = () => {
             </button>
           </div>
         </form>
-        Need an account?{''}
-        <Link className="link" href={`/register?callbackUrl=${callbackUrl}`}>
-          Register
-        </Link>
+        <div>
+          Need an account?{' '}
+          <Link className="link" href={`/register?callbackUrl=${callbackUrl}`}>
+            Register
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
-
 export default Form;

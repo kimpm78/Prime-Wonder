@@ -5,6 +5,6 @@ export const metadata: Metadata = {
   title: 'Shipping Address | PrimeWonder',
 };
 
-export default async function Register() {
+export default async function ShippingPage() {
   return <Form />;
 }

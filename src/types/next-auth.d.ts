@@ -7,9 +7,9 @@ declare module 'next-auth' {
       isAdmin?: boolean;
     } & DefaultSession['user'];
   }
-}
 
-export interface User extends DefaultUser {
-  _id?: string;
-  isAdmin?: boolean;
+  export interface User extends DefaultUser {
+    _id?: string;
+    isAdmin?: boolean;
+  }
 }

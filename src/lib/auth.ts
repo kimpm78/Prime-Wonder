@@ -33,7 +33,7 @@ export const config = {
     }),
   ],
   pages: {
-    signIn: 'signin',
+    signIn: '/signin',
     newUser: '/register',
     error: '/signin',
   },

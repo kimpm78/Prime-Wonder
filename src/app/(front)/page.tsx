@@ -17,10 +17,9 @@ export const metadata: Metadata = {
 };
 
 //非同期処理を実行して重要な情報を取得
-const Home = async () => {
+export default async function Home() {
   const featuredProducts = await productService.getFeatured();
   const latestProducts = await productService.getLatest();
-
   return (
     <>
       <div className="w-full carousel rounded-box mt-4">
@@ -31,14 +30,28 @@ const Home = async () => {
             className="carousel-item relative w-full"
           >
             <Link href={`/product/${product.slug}`}>
-              <img className="w-full" src={product.banner} alt={product.name} />
+              <img src={product.banner} className="w-full" alt={product.name} />
             </Link>
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+
+            <div
+              className="absolute flex justify-between transform 
+               -translate-y-1/2 left-5 right-5 top-1/2"
+            >
               <a
-                href={`#slide-${index === 0 ? featuredProducts.length - 1 : index - 1}`}
+                href={`#slide-${
+                  index === 0 ? featuredProducts.length - 1 : index - 1
+                }`}
                 className="btn btn-circle"
               >
                 ❮
+              </a>
+              <a
+                href={`#slide-${
+                  index === featuredProducts.length - 1 ? 0 : index + 1
+                }`}
+                className="btn btn-circle"
+              >
+                ❯
               </a>
             </div>
           </div>
@@ -55,6 +68,4 @@ const Home = async () => {
       </div>
     </>
   );
-};
-
-export default Home;
+}

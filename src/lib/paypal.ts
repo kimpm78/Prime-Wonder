@@ -5,7 +5,7 @@ export const paypal = {
     const accessToken = await generateAccessToken();
     const url = `${base}/v2/checkout/orders`;
     const response = await fetch(url, {
-      method: 'POST',
+      method: 'post',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,

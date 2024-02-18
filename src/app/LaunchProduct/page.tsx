@@ -1,4 +1,3 @@
-import CategoryMenu from '@/components/atoms/CategoryMenu';
 import ProductList from '@/components/organisms/ProductList';
 import { AiFillCaretRight } from 'react-icons/ai';
 

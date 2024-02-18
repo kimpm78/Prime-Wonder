@@ -23,6 +23,7 @@ const Form = () => {
       country: '',
     },
   });
+
   useEffect(() => {
     setValue('fullName', shippingAddress.fullName);
     setValue('address', shippingAddress.address);

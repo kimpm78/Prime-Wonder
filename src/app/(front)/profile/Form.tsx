@@ -1,8 +1,8 @@
 'use client';
-import React, { useEffect } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 type Inputs = {
@@ -24,6 +24,7 @@ const Form = () => {
     formState: { errors, isSubmitting },
   } = useForm<Inputs>({
     defaultValues: {
+      name: '',
       email: '',
       password: '',
     },
@@ -31,7 +32,7 @@ const Form = () => {
 
   useEffect(() => {
     if (session && session.user) {
-      setValue('name', session.user.email!);
+      setValue('name', session.user.name!);
       setValue('email', session.user.email!);
     }
   }, [router, session, setValue]);
@@ -54,7 +55,11 @@ const Form = () => {
         toast.success('Profile updated successfully');
         const newSession = {
           ...session,
-          user: { ...session?.user, name, email },
+          user: {
+            ...session?.user,
+            name,
+            email,
+          },
         };
         await update(newSession);
       } else {
@@ -63,15 +68,14 @@ const Form = () => {
       }
     } catch (err: any) {
       const error =
-        err.message && err.response.data && err.response.data.message
+        err.response && err.response.data && err.response.data.message
           ? err.response.data.message
           : err.message;
       toast.error(error);
     }
   };
-
   return (
-    <div className="max-w-sm mx-auto card bg-base-300 my-4">
+    <div className="max-w-sm  mx-auto card bg-base-300 my-4">
       <div className="card-body">
         <h1 className="card-title">Profile</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
@@ -99,8 +103,9 @@ const Form = () => {
               type="text"
               id="email"
               {...register('email', {
+                required: 'Email is required',
                 pattern: {
-                  value: /^[A-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                  value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                   message: 'Email is invalid',
                 },
               })}
@@ -125,7 +130,7 @@ const Form = () => {
             )}
           </div>
           <div className="my-2">
-            <label className="label" htmlFor="password">
+            <label className="label" htmlFor="confirmPassword">
               Confirm New Password
             </label>
             <input
@@ -139,8 +144,8 @@ const Form = () => {
               })}
               className="input input-bordered w-full max-w-sm"
             />
-            {errors.password?.message && (
-              <div className="text-error">{errors.password.message}</div>
+            {errors.confirmPassword?.message && (
+              <div className="text-error">{errors.confirmPassword.message}</div>
             )}
           </div>
 

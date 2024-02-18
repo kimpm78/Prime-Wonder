@@ -1,13 +1,12 @@
-import ProductIntroduction from '@/components/organisms/ProductIntroduction';
 import Link from 'next/link';
 
 const Notification = () => {
   return (
     <div>
-      <h1 className="text-3xl font-bold p-5 text-gray-700">
-        【PrimeKim】会員規約の改訂について
+      <h1 className="text-3xl font-bold p-5 text">
+        【PrimeWonder】会員規約の改訂について
       </h1>
-      <div className="flex-1 border-t border-gray-400 pt-4 pr-4 ml-4 mr-4" />
+      <div className="flex-1 border-t-4 border-gray-400 pt-4 pr-4 ml-4 mr-4" />
       <div className="flex p-10">
         <span className="text-sm font-bold leading-10">
           いつもプレミアムバンダイをご利用いただき、ありがとうございます。
@@ -16,7 +15,7 @@ const Notification = () => {
           <br />
           プレミアムバンダイ会員規約
           <Link className="underline text-orange-500" href="/">
-            <p>https://www.primekim.com/</p>
+            <p>https://www.primeWonderful.com/</p>
           </Link>
           <br />
           【改訂日】　2024年4月1日(月) 【改訂後の内容】

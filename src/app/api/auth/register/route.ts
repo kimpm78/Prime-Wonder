@@ -15,19 +15,17 @@ export const POST = async (request: NextRequest) => {
   try {
     await newUser.save();
     return Response.json(
-      {
-        message: 'User has been created',
-      },
+      { message: 'User has been created' },
       {
         status: 201,
       },
     );
   } catch (err: any) {
     return Response.json(
+      { message: err.message },
       {
-        message: err.message,
+        status: 500,
       },
-      { status: 500 },
     );
   }
 };

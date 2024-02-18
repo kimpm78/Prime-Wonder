@@ -3,6 +3,7 @@ import { convertDocToObj } from '@/lib/utils';
 import productService from '@/lib/services/productService';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Rating } from '@/components/products/Rating';
 
 export async function generateMetadata({
   params,
@@ -42,16 +43,22 @@ export default async function ProductDetails({
             width={640}
             height={640}
             sizes="100vw"
-            style={{ width: '100%', height: 'auto' }}
+            style={{
+              width: '100%',
+              height: 'auto',
+            }}
           ></Image>
         </div>
         <div>
-          <ul className="space-y-2-4">
+          <ul className="space-y-4">
             <li>
               <h1 className="text-xl">{product.name}</h1>
             </li>
             <li>
-              {product.rating} of {product.numReviews} reviews
+              <Rating
+                value={product.rating}
+                caption={`${product.numReviews} ratings`}
+              />
             </li>
             <li>{product.brand}</li>
             <li>
@@ -68,9 +75,9 @@ export default async function ProductDetails({
               <div className="mb-2 flex justify-between">
                 <div>Price</div>
                 <div>{product.price}円</div>
-                <div className="mb-2 flex justify-between">
-                  <div>Status</div>
-                </div>
+              </div>
+              <div className="mb-2 flex justify-between">
+                <div>Status</div>
                 <div>
                   {product.countInStock > 0 ? 'In stock' : 'Unavailable'}
                 </div>
